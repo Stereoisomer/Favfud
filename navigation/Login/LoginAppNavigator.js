@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Text } from 'react-native';
-import { createAppContainer, createSwitchNavigator} from 'react-navigation';
+import { createAppContainer, createSwitchNavigator, createStackNavigator} from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import AppLoadingScreen from '../../screens/Login/AppLoadingScreen';
 import LoginScreen from '../../screens/Login/LoginScreen';
+import HealthFormScreen from '../../screens/HealthForm/HealthFormScreen';
 
 // const MainAppStack = createAppContainer(
 //   createSwitchNavigator({
@@ -19,10 +20,16 @@ const InitialAppStack = createAppContainer(createSwitchNavigator(
     AppLoading: AppLoadingScreen,
     App: MainTabNavigator,
     Auth: LoginScreen,
+		Health: createStackNavigator({
+		  HealthForm: HealthFormScreen,
+		}),
   },
   {
-    initialRouteName: 'AppLoading',
+    initialRouteName: 'Health',
   }
 ));
+
+
+
 
 export default InitialAppStack;
